@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details</title>
+   <link rel="stylesheet" href="event.css">
+</head>
+<body>
+    <header>
+        <h1>The Event Noter</h1>
+    <p>The Ultimate Technology to note your event digitally</p>
+        <!-- <button id="toggleDark" style="margin-top: 15px; padding: 10px 20px; font-weight: bold;">
+            Toggle Dark Mode
+          </button> -->
+          
+      </header>
+    <div class="event-detail">
+        <h2 id="eventTitle"></h2>
+        <img id="eventImage" src="" alt="Event Image">
+        <p id="eventTime"></p>
+        <p id="eventSpeaker"></p>
+        <p id="eventDescription"></p>
+    </div>
+    <button onclick="window.location.href='index.html'" style="margin-top: 20px; background-color: #007bff; color: white; padding: 12px 20px; border: none; border-radius: 5px; font-size: 1rem; cursor: pointer;">
+        ← Back to Events
+    </button>
+    
+    <script>
+        const selectedEventIndex = localStorage.getItem("selectedEvent");
+        const events = JSON.parse(localStorage.getItem("events"));
+        
+        if (selectedEventIndex !== null && events) {
+            const event = events[selectedEventIndex];
+            
+            document.getElementById("eventTitle").textContent = event.title;
+            document.getElementById("eventImage").src = event.image;  // Set image source
+            document.getElementById("eventTime").textContent = "Time: " + event.time;
+            document.getElementById("eventSpeaker").textContent = "Speaker: " + event.speaker;
+            document.getElementById("eventDescription").textContent = "Description: " + event.description;
+        }
+    </script>
+</body>
+</html>
